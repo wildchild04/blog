@@ -3,13 +3,26 @@ import Head from 'next/head';
 import Image from 'next/image';
 import utilStyle from '../styles/utils.module.css'
 import Link from 'next/link';
+import React, { useState } from 'react';
 
 const name = "Wild";
 export const siteTitle = "Next,js Sample Website"
 
 export default function Layout({ children, home }) {
+    const [theme, setTheme] = useState('light');
+
+    const toggleTheme = () => {
+        console.log("button");
+      
+        if (theme === 'light') {
+            setTheme('dark');
+        } else {
+            setTheme('light');
+        }    
+    };
     return (
-        <div className={styles.container}>
+
+        <div className={`${styles.container} App ${theme}`}>
             <Head>
                 <link rel="icon" href="favicon.ico" />
                 <meta name="description" content="Learn how to build a personal website using Next.js" />
@@ -24,7 +37,7 @@ export default function Layout({ children, home }) {
 
             </Head>
             <header className={styles.header}>
-                { home ? (
+                {home ? (
                     <>
                         <Image
                             priority
@@ -35,6 +48,7 @@ export default function Layout({ children, home }) {
                             alt=""
                         />
                         <h1 className={utilStyle.heading2Xl}>{name}</h1>
+                        <button onClick={toggleTheme}>Toggle Theme</button>
                     </>
                 ) : (
                     <>
@@ -56,7 +70,7 @@ export default function Layout({ children, home }) {
                     </>
                 )}
             </header>
-            <main>{children}</main> 
+            <main>{children}</main>
             {!home && (
                 <div className={styles.backToHome}>
                     <Link href="/">Back to home</Link>

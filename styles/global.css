@@ -6,6 +6,7 @@ body {
     line-height: 1.6;
     font-size: 18px;
 }
+
 * {
     box-sizing: border-box;
 }
@@ -22,4 +23,14 @@ a:hover {
 img {
     max-width: 100%;
     display: block;
+}
+
+.dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.light {
+    background-color: #fff;
+    color: #333;
 }
