@@ -1,0 +1,30 @@
+{
+  "name": "blog-react-bundle",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npm run bundle-install && sh -c 'npm run dev:vite & npm run dev:jekyll & wait'",
+    "dev:vite": "vite",
+    "dev:jekyll": "bundle exec jekyll serve --livereload",
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "typecheck": "tsc --noEmit",
+    "bundle-install": "bundle config set --local path vendor/bundle && bundle install",
+    "run-jekyll": "npm run build && npm run bundle-install && JEKYLL_ENV=production bundle exec jekyll serve",
+    "clean": "rm -rf _site node_modules && rm -f assets/js/blog-app.js"
+  },
+  "dependencies": {
+    "@wildchild/design-system": "git+ssh://git@github.com/wildchild04/Wildchild-Design-System.git",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^5.0.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3"
+  }
+}
